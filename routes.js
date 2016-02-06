@@ -28,9 +28,9 @@ module.exports.load = function(server, app) {
 
   // ------ API -------
 
-  server.post(route('/upload'), function(req, res, next) {
+  /*server.post(route('/upload'), function(req, res, next) {
     res.json(req.files);
-  });
+  });*/
 
   server.post(route('/suggest'), function(req, res, next) {
     var books = req.body.books;
@@ -40,7 +40,7 @@ module.exports.load = function(server, app) {
     var params = '"' + books.join('" "') + '"';
     exec([python, script, params].join(' '), 
         function callback(error, stdout, stderr) {
-          req.write(stdout);
+          res.json(JSON.parse(stdout));
     });
   });
 }
