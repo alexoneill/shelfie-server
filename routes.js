@@ -37,7 +37,7 @@ module.exports.load = function(server, app) {
 
     var python = '/usr/bin/python2.7'
     var script = path.join(__dirname, 'scripts', 'suggest.py');
-    var params = books.join(' ');
+    var params = '"' + books.join('" "') + '"';
     exec([python, script, params].join(' '), 
         function callback(error, stdout, stderr) {
           req.write(stdout);
