@@ -20,7 +20,9 @@ var _ssl = path.join(_assets, 'ssl');
 module.exports.load = function(server, app) {
   // Fancy, user-facing home page
   server.get(route('/'), function(req, res) {
-    res.render(view('home'));
+    res.render(view('home'), {
+      root: apps.getRoot(appName)
+    });
   });
 
   // ------ API -------

@@ -2,7 +2,7 @@
 @import 'libs/functions';
 @import 'libs/mixins';
 @import url("font-awesome.min.css");
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600,600italic,700,700italic");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600,600italic,700,700italic");
 
 /*
 	Directive by HTML5 UP
@@ -345,7 +345,7 @@
 
 		&:after {
 			@include vendor('transition', 'opacity 0.25s ease-in-out');
-			background-image: url('images/overlay.png');
+			background-image: url('/shelfie/images/overlay.png');
 			content: '';
 			display: block;
 			height: 100%;
@@ -724,7 +724,7 @@
 
 	#header {
 		background-attachment:		scroll,							scroll,					fixed;
-		background-image:			url('images/top-3200.svg'),		url('images/overlay.png'),		url('../../images/header.jpg');
+		background-image:			url('/shelfie/images/top-3200.svg'),		url('/shelfie/images/overlay.png'),		url('/shelfie/images/header.jpg');
 		background-position:		bottom center,					top left,				center center;
 		background-repeat:			repeat-x,						repeat,					no-repeat;
 		background-size:			3200px 460px,					auto,					cover;
@@ -816,7 +816,7 @@
 	#footer {
 		background-attachment:		scroll;
 		background-color:			_palette(accent1, bg);
-		background-image:			url('images/bottom-3200.svg');
+		background-image:			url('/shelfie/images/bottom-3200.svg');
 		background-position:		top center;
 		background-repeat:			repeat-x;
 		background-size:			3200px 460px;
@@ -1051,7 +1051,7 @@
 
 			#header {
 				background-attachment:		scroll,							scroll,							scroll;
-				background-image:			url('images/top-1600.svg'),		url('images/overlay.png'),		url('../../images/header.jpg');
+				background-image:			url('/shelfie/images/top-1600.svg'),		url('/shelfie/images/overlay.png'),		url('/shelfie/images/header.jpg');
 				background-size:			1600px 230px,					auto,							cover;
 				padding: 6em 0 12em 0;
 
@@ -1075,7 +1075,7 @@
 		/* Footer */
 
 			#footer {
-				background-image:			url('images/bottom-1600.svg');
+				background-image:			url('/shelfie/images/bottom-1600.svg');
 				background-size:			1600px 230px;
 				margin-top: -100px;
 				padding: calc(230px + 4em) 0 6em 0;
@@ -1228,7 +1228,7 @@
 		/* Header */
 
 			#header {
-				background-image:			url('images/top-1280.svg'),			url('images/overlay.png'),		url('../../images/header.jpg');
+				background-image:			url('/shelfie/images/top-1280.svg'),			url('/shelfie/images/overlay.png'),		url('/shelfie/images/header.jpg');
 				background-size:			1280px 184px,						auto,							cover;
 				padding: 3em 0 7em 0;
 
@@ -1256,7 +1256,7 @@
 		/* Footer */
 
 			#footer {
-				background-image:			url('images/bottom-1280.svg');
+				background-image:			url('/shelfie/images/bottom-1280.svg');
 				background-size:			1280px 184px;
 				margin-top: -75px;
 				padding: calc(184px + 2em) 0 2em 0;
