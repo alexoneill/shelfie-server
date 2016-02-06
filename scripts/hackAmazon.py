@@ -22,7 +22,7 @@ def recommendations(isbn):
 	reco = []
 	url = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords='+str(isbn)+'&rh=n%3A283155%2Ck%3A'+str(isbn)
 	r = urllib.urlopen(url).read()
-	soup = BeautifulSoup(r)
+	soup = BeautifulSoup(r, "html.parser")
 	res = soup.find(class_="a-size-medium a-color-null s-inline s-access-title a-text-normal")
 	if res == None:
 		return [[isbn,None,None],None]
@@ -31,7 +31,7 @@ def recommendations(isbn):
 	link = res.parent["href"]
 
 	r = urllib.urlopen(link).read()
-	soup = BeautifulSoup(r)
+	soup = BeautifulSoup(r, "html.parser")
 	for res in soup.find_all(class_="a-carousel-card a-float-left"):
 		rfa = res.find_all('a')
 		title_raw = rfa[0].find_all('div')[-1].contents[0]

@@ -5,6 +5,7 @@ import httplib2
 import hackAmazon as ha
 
 import sys
+import json
 
 api_key = 'AIzaSyBhtLjbQ5F3XoqEElobXVsNhpPf3nkR3WU'
 try:
@@ -56,7 +57,7 @@ def topNQueries(q,N=1):
   	return result
 
 def suggest(q):
-	f = sys.stdout
+	ml = []
 	for result in topNQueries(q):
 		# print result
 		# print '='*50
@@ -65,12 +66,15 @@ def suggest(q):
 		reco = ha.recommendations(result[3])
 		if reco[1] == None:
 			continue
-		f.write('If you like \"%s\" by %s, you should read:\n'%(result[0],result[1]))
+
+		l = list()
 		for bk in reco[1]:
-			# print '\t- \"%s\" by %s'%(bk[0],bk[1])
-			# print '\t(%s)'%bk[2]
-			f.write('\n\t- \"%s\" by %s\n'%(bk[0],bk[1]))
-			f.write('\t (%s)\n'%bk[2])
+			d = dict([('book', bk[0]), ('author', bk[1]), ('link', bk[2])])
+			l += [d]
+
+		ml += [l]
+
+	print json.dumps(ml)
 
 for item in sys.argv[1:]:
   suggest(item)
