@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<!--
+	Directive by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>shelfie results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{root}}/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="{{root}}/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{root}}/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!--book,author,link-->
+		<ul>
+  		{{#each}}
+  			<li>{{desc}}</li>
+  		{{/each}}
+		</ul>
+	</body>
+	<script>
+	Handlebars.registerHelper('desc', function() {
+  	var title = Handlebars.escapeExpression(this.title);
+  	var author = Handlebars.escapeExpression(this.author);
+  	var link = Handlebars.escapeExpression(this.link);
+	return new Handlebars.SafeString(
+	    "<a href="+link+"><h1>"+title+"\" by "+author</h1></a>);
+		
+	});
+	//"{{title}}" by {{author}}
+	</script>
+</html>
