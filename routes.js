@@ -7,22 +7,11 @@ var path = require('path'),
     mongodb = require('mongodb');
     exec = require('child_process').exec;
 
-// App-scheme specific logic
-var appName = path.basename(__dirname);
-var _parent = path.join(__dirname, '..');
-var apps = require(path.join(_parent, 'app.js'));
-var route = apps.routeGen(appName);
-var view = apps.viewGen(appName);
-
-// Paths
-var _assets = path.join(__dirname, 'assets');
-var _ssl = path.join(_assets, 'ssl');
-
 module.exports.load = function(server, app) {
   // Fancy, user-facing home page
-  server.get(route('/'), function(req, res) {
-    res.render(view('home'), {
-      root: apps.getRoot(appName)
+  server.get(app.route('/'), function(req, res) {
+    res.render(app.view('home'), {
+      root: app.util.getRoot(app.name)
     });
   });
 
@@ -32,7 +21,7 @@ module.exports.load = function(server, app) {
     res.json(req.files);
   });*/
 
-  server.post(route('/suggest'), function(req, res, next) {
+  server.post(app.route('/suggest'), function(req, res, next) {
     var books = req.body.books;
 
     var python = '/usr/bin/python2.7'
